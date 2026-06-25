@@ -1,0 +1,62 @@
+create table salaslab (
+	id_salas_lab serial not null,
+	nome varchar(60) not null,
+	tipo varchar(10) not null,
+
+	constraint id_salas_lab_pk primary key(id_salas_lab)
+)
+
+	
+create table equip (
+	id_equip serial not null,
+	nome varchar(60) not null,
+
+	constraint id_equip_pk primary key(id_equip)
+)
+
+create table usuario (
+	id_usuario serial not null,
+	nome_usuario varchar(90) not null,
+	email varchar(90) not null,
+	senha varchar(100) not null,
+
+	constraint id_usuario_pk primary key(id_usuario)
+
+	
+)
+
+create table reservasLab (
+	id_reserva_salaslab serial not null,
+	id_salas_lab integer not null,
+	inicio_data date not null,
+	fim_data date not null,
+	horario_inico time not null,
+	horario_final time not null,
+	id_usuario integer null,
+
+	constraint id_reservaslab_pk primary key(id_reserva_salaslab),
+	constraint id_usuario_fk foreign key(id_usuario)
+	references usuario (id_usuario),
+	constraint id_salas_lab_fk foreign key(id_salas_lab)
+	references salaslab (id_salas_lab)
+	
+)
+
+create table reservaequip (
+	id_reserva_equip serial not null,
+	id_equip integer not null,
+	inicio_data date not null,
+	fim_data date not null,
+	horario_inico time not null,
+	horario_final time not null,
+	id_usuario integer not null,
+
+	constraint id_reserva_equip_pk primary key(id_reserva_equip),
+	constraint id_usuario_fk foreign key(id_usuario)
+	references usuario (id_usuario),
+	constraint id_equip_fk foreign key(id_equip)
+	references equip (id_equip)
+)
+
+
+
