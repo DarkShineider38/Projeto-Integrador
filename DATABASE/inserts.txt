@@ -1,0 +1,18 @@
+equip:
+insert into equip(nome) values('Projetor 01');
+insert into equip(nome) values('Projetor 02');
+insert into equip(nome) values('Projetor 03');
+insert into equip(nome) values('Projetor 04');
+insert into equip(nome) values('Projetor 05')
+
+-------------------------------------------------------------
+
+Salas lab:
+insert into salaslab(nome, tipo) values('Lab 101', 'Lab');
+insert into salaslab(nome, tipo) values('Lab 102', 'Lab');
+insert into salaslab(nome, tipo) values('Sala 201', 'Sala');
+insert into salaslab(nome, tipo) values('Sala 204', 'Sala');
+insert into salaslab(nome, tipo) values('Ref 203', 'Refeitorio');
+
+----------------------------------------------------------------
+
