@@ -1,6 +1,5 @@
 <?php
-
-    class ReservasSalasLab{
+    class equip{
         public $id_reserva_equip;
         public $id_equip;
         public $id_usuario;
@@ -8,12 +7,13 @@
         public $fim_data;
         public $horario_inicio;
         public $horario_final;
+        private $dbconn;
 
         public function __construct($connection) {
             $this->dbconn = $connection;
         }
 
-        function cadastrarReserva(){
+        function criar(){
             $sql = "INSERT INTO reserva_equip (id_equip, inicio_data, fim_data, horario_inico, horario_final, id_usuario) VALUES($1,$2,$3,$4,$5,$6)";
             $result = pg_query_params($this->dbconn, $sql, array($this->id_equip, $this->inicio_data, $this->fim_data, $this->horario_inicio, $this->horario_final, $this->id_usuario));
 
@@ -27,7 +27,7 @@
             }
         }
 
-        function editarReserva(){
+        function atualizar(){
             $sql = "select id_reserva_equip from reserva_equip where id_reserva_equip = $1";
             $result = pg_query_params($this->dbconn, $sql, array($this->id_reserva_equip));
 
@@ -46,14 +46,9 @@
                 }
             }
         }
-
-    
-
-        
-
-
-
-
-
     }
+
+
+
+
 ?>
