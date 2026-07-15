@@ -1,5 +1,7 @@
 <?php
-
+    include 'connection.php';
+    include 'equip.php';
+    
     if ($_SERVER['REQUEST_METHOD'] == 'POST'){
         $id_equip = $_POST['id_equip'];
         $id_usuario = $_POST['id_usuario'];
@@ -9,7 +11,7 @@
         $horario_final = $_POST['horario_final'];
 
         $conn = ObterConexao();
-        $reserva = new reserva($conn);
+        $reserva = new equip($conn);
 
         $reserva->id_equip = $id_equip;
         $reserva->id_usuario = $id_usuario;

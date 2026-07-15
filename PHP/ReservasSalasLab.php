@@ -1,8 +1,8 @@
 <?php
 
     class ReservasSalasLab{
-        public $id_reserva_equip;
-        public $id_equip;
+        public $id_reserva_sala;
+        public $id_sala;
         public $id_usuario;
         public $inicio_data;
         public $fim_data;
@@ -14,8 +14,8 @@
         }
 
         function cadastrarReserva(){
-            $sql = "INSERT INTO reserva_equip (id_equip, inicio_data, fim_data, horario_inico, horario_final, id_usuario) VALUES($1,$2,$3,$4,$5,$6)";
-            $result = pg_query_params($this->dbconn, $sql, array($this->id_equip, $this->inicio_data, $this->fim_data, $this->horario_inicio, $this->horario_final, $this->id_usuario));
+            $sql = "INSERT INTO reservasLab (id_sala, inicio_data, fim_data, horario_inico, horario_final, id_usuario) VALUES($1,$2,$3,$4,$5,$6)";
+            $result = pg_query_params($this->dbconn, $sql, array($this->id_sala, $this->inicio_data, $this->fim_data, $this->horario_inicio, $this->horario_final, $this->id_usuario));
 
             if($result){
                 echo "Reserva criada com sucesso";

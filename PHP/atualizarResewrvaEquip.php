@@ -12,7 +12,7 @@
         $horario_final = $_POST['horario_final'];
 
         $conn = ObterConexao();
-        $reserva = new reserva($conn);
+        $reserva = new equip($conn);
 
         $reserva->id_reserva_equip = $id_reserva_equip;
         $reserva->id_equip = $id_equip;
