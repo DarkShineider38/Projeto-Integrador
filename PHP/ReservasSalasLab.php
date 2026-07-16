@@ -28,14 +28,14 @@
         }
 
         function editarReserva(){
-            $sql = "select id_salas_lab from reservasLab where id_salas_lab = $1";
+            $sql = "select id_reserva_salaslab from reservasLab where id_reserva_salaslab = $1";
             $result = pg_query_params($this->dbconn, $sql, array($this->id_reserva_sala));
 
             $registro = pg_fetch_assoc($result);
             if($registro){
-                $query = "update reservasLab set id_salas_lab = $1, inicio_data = $2, fim_data = $3, horario_inico = $4, horario_final = $5, id_usuario = $6 where id_salas_lab = ".$registro['id_salas_lab'];
+                $query = "update reservasLab set id_salas_lab = $1, inicio_data = $2, fim_data = $3, horario_inico = $4, horario_final = $5, id_usuario = $6 where id_reserva_salaslab= ".$registro['id_reserva_salaslab'];
                 $stmt = pg_prepare($this->dbconn, "update_query", $query);
-                $result2 = pg_execute($this->dbconn, "update_query", array($this->id_equip, $this->inicio_data, $this->fim_data, $this->horario_inicio, $this->horario_final, $this->id_usuario));
+                $result2 = pg_execute($this->dbconn, "update_query", array($this->id_, $this->inicio_data, $this->fim_data, $this->horario_inicio, $this->horario_final, $this->id_usuario));
                 if ($stmt) {
                     echo 'reserva atualizada com sucesso';
                     include '../homepage.html';
