@@ -3,7 +3,7 @@
     include 'ReservasSalasLab.php';
 
     $conn = ObterConexao();
-    $reservaSala = new ReservasSalasLab($conn);
+    $sala = new ReservasSalasLab($conn);
 
-    $reservaSala->exibirReservasSalasLab();
+    $sala->exibirSalas();
 ?>
