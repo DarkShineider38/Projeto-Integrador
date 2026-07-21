@@ -20,8 +20,9 @@ create table usuario (
 	email varchar(90) not null,
 	senha varchar(100) not null,
 
-	constraint id_usuario_pk primary key(id_usuario)
-
+	constraint id_usuario_pk primary key(id_usuario),
+	constraint email_unique unique(email),
+	constraint senha_unique unique(senha)
 	
 )
 
