@@ -14,18 +14,28 @@
         }
 
         function cadastrarReserva(){
-            $sql = "INSERT INTO reservasLab (id_salas_lab, inicio_data, fim_data, horario_inico, horario_final, id_usuario) VALUES($1,$2,$3,$4,$5,$6)";
-            $result = pg_query_params($this->dbconn, $sql, array($this->id_sala, $this->inicio_data, $this->fim_data, $this->horario_inicio, $this->horario_final, $this->id_usuario));
+                $sql = "SELECT id_reserva_salaslab FROM reservasLab WHERE id_salas_lab = $1 AND inicio_data = $2 AND horario_inico = $3";
+                $result = pg_query_params($this->dbconn, $sql, array($this->id_sala, $this->inicio_data, $this->horario_inicio));
 
-            if($result){
-                echo "Reserva criada com sucesso";
-                include '../homepage.html';
+                $registro = pg_fetch_assoc($result);
+                if($registro){
+                    echo "Já existe uma reserva para essa sala nesse horário";
+                    include '../homepage.html';
+                }
+                else{
+                    $sql = "INSERT INTO reservasLab (id_salas_lab, inicio_data, fim_data, horario_inico, horario_final, id_usuario) VALUES($1,$2,$3,$4,$5,$6)";
+                    $result = pg_query_params($this->dbconn, $sql, array($this->id_sala, $this->inicio_data, $this->fim_data, $this->horario_inicio, $this->horario_final, $this->id_usuario));
+
+                    if($result){
+                        echo "Reserva criada com sucesso";
+                        include '../homepage.html';
+                    }
+                    else{
+                        echo "não foi possivel criar a reserva";
+                        include '../homepage.html';
+                    }
+                }
             }
-            else{
-                echo "não foi possivel criar a reserva";
-                include '../homepage.html';
-            }
-        }
 
         function editarReserva(){
             $sql = "select id_reserva_salaslab from reservasLab where id_reserva_salaslab = $1";
@@ -44,6 +54,30 @@
                     echo 'falha ao atualizar reserva';
                     include '../homepage.html';
                 }
+            }
+        }
+
+        function cancelarReserva(){
+            $sql = "SELECT id_reserva_salaslab FROM reservasLab WHERE id_reserva_salaslab = $1";
+            $result = pg_query_params($this->dbconn, $sql, array($this->id_reserva_sala));
+
+            $registro = pg_fetch_assoc($result);
+            if($registro){
+                $sql = "DELETE FROM reservasLab WHERE id_reserva_salaslab = $1";
+                $result = pg_query_params($this->dbconn, $sql, array($this->id_reserva_sala));
+
+                if($result){
+                    echo "Reserva cancelada com sucesso";
+                    include '../homepage.html';
+                }
+                else{
+                    echo "não foi possivel cancelar a reserva";
+                    include '../homepage.html';
+                }
+            }
+            else{
+                echo "Reserva não encontrada";
+                include '../homepage.html';
             }
         }
 

@@ -13,17 +13,27 @@
             $this->dbconn = $connection;
         }
 
-        function criar(){
-            $sql = "INSERT INTO reservaequip (id_equip, inicio_data, fim_data, horario_inico, horario_final, id_usuario) VALUES($1,$2,$3,$4,$5,$6)";
-            $result = pg_query_params($this->dbconn, $sql, array($this->id_equip, $this->inicio_data, $this->fim_data, $this->horario_inicio, $this->horario_final, $this->id_usuario));
+       function criar(){
+            $sql = "SELECT id_reserva_equip FROM reservaequip WHERE id_equip = $1 AND inicio_data = $2 AND horario_inico = $3";
+            $result = pg_query_params($this->dbconn, $sql, array($this->id_equip, $this->inicio_data, $this->horario_inicio));
 
-            if($result){
-                echo "Reserva criada com sucesso";
+            $registro = pg_fetch_assoc($result);
+            if($registro){
+                echo "Já existe uma reserva para esse equipamento nesse horário";
                 include '../homepage.html';
             }
             else{
-                echo "não foi possivel criar a reserva";
-                include '../homepage.html';
+                $sql = "INSERT INTO reservaequip (id_equip, inicio_data, fim_data, horario_inico, horario_final, id_usuario) VALUES($1,$2,$3,$4,$5,$6)";
+                $result = pg_query_params($this->dbconn, $sql, array($this->id_equip, $this->inicio_data, $this->fim_data, $this->horario_inicio, $this->horario_final, $this->id_usuario));
+
+                if($result){
+                    echo "Reserva criada com sucesso";
+                    include '../homepage.html';
+                }
+                else{
+                    echo "não foi possivel criar a reserva";
+                    include '../homepage.html';
+                }
             }
         }
 
@@ -44,6 +54,30 @@
                     echo 'falha ao atualizar reserva';
                     include '../homepage.html';
                 }
+            }
+        }
+
+        function cancelarReserva(){
+            $sql = "select id_reserva_equip FROM reservaequip WHERE id_reserva_equip = $1";
+            $result = pg_query_params($this->dbconn, $sql, array($this->id_reserva_equip));
+
+            $registro = pg_fetch_assoc($result);
+            if($registro){
+                $sql = "DELETE FROM reservaequip WHERE id_reserva_equip = $1";
+                $result = pg_query_params($this->dbconn, $sql, array($this->id_reserva_equip));
+
+                if($result){
+                    echo "Reserva cancelada com sucesso";
+                    include '../homepage.html';
+                }
+                else{
+                    echo "não foi possivel cancelar a reserva";
+                    include '../homepage.html';
+                }
+            }
+            else{
+                echo "Reserva não encontrada";
+                include '../homepage.html';
             }
         }
 
