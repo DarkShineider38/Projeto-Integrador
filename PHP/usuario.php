@@ -19,7 +19,7 @@
 
                 if($result){
                     echo "Usuario cadastrado com sucesso";
-                    include '../homepage.html';
+                    include './../homepage.html';
                 }
                 else{
                     echo "não foi possivel realizar o cadastro";

@@ -3,98 +3,100 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ReservaFácil - Nova Reserva de Equipamento</title>
-    <!-- Bootstrap 5 CSS -->
+    <title>Reservar Equipamento</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
-    <!-- Bootstrap Icons -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
-    <!-- Custom CSS -->
-    <link rel="stylesheet" href="CSS/style.css">
+    <link rel="stylesheet" href="../CSS/style.css">
 </head>
 <body class="bg-light">
 
-    <!-- Topo -->
-    <div class="bg-primary-custom text-white py-4 px-3 rounded-bottom-5 shadow mb-4">
-        <div class="container max-w-custom d-flex justify-content-between align-items-center">
-            <div class="d-flex align-items-center gap-2">
-                <div class="bg-white bg-opacity-25 p-2 rounded-3">
-                    <i class="bi bi-calendar-event text-white"></i>
-                </div>
-                <span class="fw-bold fs-5">ReservaFácil</span>
+    <div class="bg-primary-custom text-white pb-5 pt-4 px-3 rounded-bottom-5 shadow">
+        <div class="container max-w-custom">
+            <div class="d-flex align-items-center gap-2 mb-2">
+                <a href="homepage.html" class="btn btn-dark-glass rounded-circle p-2 text-white border-0" style="width: 40px; height: 40px;">
+                    <i class="bi bi-arrow-left"></i>
+                </a>
+                <span class="fw-bold fs-5">Reservar Equipamento</span>
             </div>
-            <a href="../homepage.html" class="text-white text-decoration-none small"><i class="bi bi-arrow-left"></i> Voltar</a>
+            <p class="opacity-75 small mb-0">Preencha os dados para solicitar o equipamento</p>
         </div>
     </div>
 
-    <!-- Formulário -->
-    <div class="container max-w-custom pb-5">
+    <div class="container max-w-custom mt-n4 pb-5">
         <div class="card border-0 shadow-lg rounded-4">
-            <div class="card-body p-4 p-md-4">
-                
-                <div class="d-flex align-items-center gap-2 mb-3">
-                    <div class="bg-info text-white p-2 rounded-3">
-                        <i class="bi bi-laptop"></i>
-                    </div>
-                    <div>
-                        <h4 class="fw-bold text-dark mb-0 fs-5">Reservar Equipamento</h4>
-                        <p class="text-muted small mb-0">Selecione o equipamento e defina o período</p>
-                    </div>
-                </div>
+            <div class="card-body p-4">
+                <form method="post" action="./criarReservaEquip.html">
 
-                <hr class="text-muted opacity-25 mb-4">
-
-                <!-- Aponta para o script PHP de processamento -->
-                <form action="./Equip.php" method="POST">
-                    
-                    <!-- Escolher entre Projetor e Notebook (valores enviados como 'projetor' ou 'notebook') -->
                     <div class="mb-3">
-                        <label for="tipo_equipamento" class="form-label text-secondary small fw-medium">Selecione o Equipamento</label>
+                        <label class="form-label text-secondary small fw-medium">ID Equipamento</label>
                         <div class="input-group bg-light rounded-3 overflow-hidden border">
-                            <span class="input-group-text bg-transparent border-0 text-muted ps-3"><i class="bi bi-display"></i></span>
-                            <select class="form-select bg-transparent border-0 py-2 shadow-none" id="tipo_equipamento" name="tipo_equipamento" required>
-                                <option value="" selected disabled>Escolha uma opção...</option>
-                                <option value="projetor">Projetor</option>
-                                <option value="notebook">Notebook</option>
-                            </select>
+                            <span class="input-group-text bg-transparent border-0 text-muted ps-3">
+                                <i class="bi bi-pc-display"></i>
+                            </span>
+                            <input type="text" class="form-control bg-transparent border-0 py-2 shadow-none" name="id_equip" required>
                         </div>
                     </div>
 
-                    <!-- Datas Início e Fim (Lado a Lado) -->
-                    <div class="row mb-3">
-                        <div class="col-6">
-                            <label for="inicio_data" class="form-label text-secondary small fw-medium">Data Início</label>
-                            <input type="date" class="form-control bg-light border py-2 rounded-3 shadow-none" id="inicio_data" name="inicio_data" required>
-                        </div>
-                        <div class="col-6">
-                            <label for="fim_data" class="form-label text-secondary small fw-medium">Data Fim</label>
-                            <input type="date" class="form-control bg-light border py-2 rounded-3 shadow-none" id="fim_data" name="fim_data" required>
+                    <div class="mb-3">
+                        <label class="form-label text-secondary small fw-medium">ID Usuário</label>
+                        <div class="input-group bg-light rounded-3 overflow-hidden border">
+                            <span class="input-group-text bg-transparent border-0 text-muted ps-3">
+                                <i class="bi bi-person"></i>
+                            </span>
+                            <input type="text" class="form-control bg-transparent border-0 py-2 shadow-none" name="id_usuario" required>
                         </div>
                     </div>
 
-                    <!-- Horários Início e Fim (Lado a Lado) -->
-                    <div class="row mb-4">
-                        <div class="col-6">
-                            <label for="horario_inicio" class="form-label text-secondary small fw-medium">Horário Início</label>
-                            <input type="time" class="form-control bg-light border py-2 rounded-3 shadow-none" id="horario_inicio" name="horario_inicio" required>
+                    <div class="row">
+                        <div class="col-6 mb-3">
+                            <label class="form-label text-secondary small fw-medium">Data Início</label>
+                            <div class="input-group bg-light rounded-3 overflow-hidden border">
+                                <span class="input-group-text bg-transparent border-0 text-muted ps-3">
+                                    <i class="bi bi-calendar-event"></i>
+                                </span>
+                                <input type="date" class="form-control bg-transparent border-0 py-2 shadow-none" name="inicio_data" required>
+                            </div>
                         </div>
-                        <div class="col-6">
-                            <label for="horario_final" class="form-label text-secondary small fw-medium">Horário Final</label>
-                            <input type="time" class="form-control bg-light border py-2 rounded-3 shadow-none" id="horario_final" name="horario_final" required>
+                        <div class="col-6 mb-3">
+                            <label class="form-label text-secondary small fw-medium">Data Fim</label>
+                            <div class="input-group bg-light rounded-3 overflow-hidden border">
+                                <span class="input-group-text bg-transparent border-0 text-muted ps-3">
+                                    <i class="bi bi-calendar-check"></i>
+                                </span>
+                                <input type="date" class="form-control bg-transparent border-0 py-2 shadow-none" name="fim_data" required>
+                            </div>
                         </div>
                     </div>
 
-                    <!-- Botão Reservar -->
+                    <div class="row">
+                        <div class="col-6 mb-4">
+                            <label class="form-label text-secondary small fw-medium">Horário Início</label>
+                            <div class="input-group bg-light rounded-3 overflow-hidden border">
+                                <span class="input-group-text bg-transparent border-0 text-muted ps-3">
+                                    <i class="bi bi-clock"></i>
+                                </span>
+                                <input type="time" class="form-control bg-transparent border-0 py-2 shadow-none" name="horario_inicio" required>
+                            </div>
+                        </div>
+                        <div class="col-6 mb-4">
+                            <label class="form-label text-secondary small fw-medium">Horário Final</label>
+                            <div class="input-group bg-light rounded-3 overflow-hidden border">
+                                <span class="input-group-text bg-transparent border-0 text-muted ps-3">
+                                    <i class="bi bi-clock-history"></i>
+                                </span>
+                                <input type="time" class="form-control bg-transparent border-0 py-2 shadow-none" name="horario_final" required>
+                            </div>
+                        </div>
+                    </div>
+
                     <button type="submit" class="btn btn-secondary-custom w-100 py-3 fw-semibold rounded-3 text-white shadow-sm">
-                        Reservar <i class="bi bi-check-lg ms-1"></i>
+                        Reservar <i class="bi bi-check-circle ms-1"></i>
                     </button>
-
                 </form>
-
             </div>
         </div>
     </div>
 
-    <!-- Bootstrap 5 JS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
