@@ -1,31 +1,100 @@
 <!DOCTYPE html>
-<html lang="PT-BR">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Document</title>
-    </head>
-    <body>
-        <form method="post" action="./criarReservaEquip.html">
-            <label>ID Equipamento:</label>
-            <input type="text" name="id_equip" required><br>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ReservaFácil - Nova Reserva de Equipamento</title>
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="CSS/style.css">
+</head>
+<body class="bg-light">
 
-            <label>ID Usuário:</label>
-            <input type="text" name="id_usuario" required><br>
+    <!-- Topo -->
+    <div class="bg-primary-custom text-white py-4 px-3 rounded-bottom-5 shadow mb-4">
+        <div class="container max-w-custom d-flex justify-content-between align-items-center">
+            <div class="d-flex align-items-center gap-2">
+                <div class="bg-white bg-opacity-25 p-2 rounded-3">
+                    <i class="bi bi-calendar-event text-white"></i>
+                </div>
+                <span class="fw-bold fs-5">ReservaFácil</span>
+            </div>
+            <a href="../homepage.html" class="text-white text-decoration-none small"><i class="bi bi-arrow-left"></i> Voltar</a>
+        </div>
+    </div>
 
-            <label>Data Início:</label>
-            <input type="date" name="inicio_data" required><br>
+    <!-- Formulário -->
+    <div class="container max-w-custom pb-5">
+        <div class="card border-0 shadow-lg rounded-4">
+            <div class="card-body p-4 p-md-4">
+                
+                <div class="d-flex align-items-center gap-2 mb-3">
+                    <div class="bg-info text-white p-2 rounded-3">
+                        <i class="bi bi-laptop"></i>
+                    </div>
+                    <div>
+                        <h4 class="fw-bold text-dark mb-0 fs-5">Reservar Equipamento</h4>
+                        <p class="text-muted small mb-0">Selecione o equipamento e defina o período</p>
+                    </div>
+                </div>
 
-            <label>Data Fim:</label>
-            <input type="date" name="fim_data" required><br>
+                <hr class="text-muted opacity-25 mb-4">
 
-            <label>Horário Início:</label>
-            <input type="time" name="horario_inicio" required><br>
+                <!-- Aponta para o script PHP de processamento -->
+                <form action="./Equip.php" method="POST">
+                    
+                    <!-- Escolher entre Projetor e Notebook (valores enviados como 'projetor' ou 'notebook') -->
+                    <div class="mb-3">
+                        <label for="tipo_equipamento" class="form-label text-secondary small fw-medium">Selecione o Equipamento</label>
+                        <div class="input-group bg-light rounded-3 overflow-hidden border">
+                            <span class="input-group-text bg-transparent border-0 text-muted ps-3"><i class="bi bi-display"></i></span>
+                            <select class="form-select bg-transparent border-0 py-2 shadow-none" id="tipo_equipamento" name="tipo_equipamento" required>
+                                <option value="" selected disabled>Escolha uma opção...</option>
+                                <option value="projetor">Projetor</option>
+                                <option value="notebook">Notebook</option>
+                            </select>
+                        </div>
+                    </div>
 
-            <label>Horário Final:</label>
-            <input type="time" name="horario_final" required><br>
+                    <!-- Datas Início e Fim (Lado a Lado) -->
+                    <div class="row mb-3">
+                        <div class="col-6">
+                            <label for="inicio_data" class="form-label text-secondary small fw-medium">Data Início</label>
+                            <input type="date" class="form-control bg-light border py-2 rounded-3 shadow-none" id="inicio_data" name="inicio_data" required>
+                        </div>
+                        <div class="col-6">
+                            <label for="fim_data" class="form-label text-secondary small fw-medium">Data Fim</label>
+                            <input type="date" class="form-control bg-light border py-2 rounded-3 shadow-none" id="fim_data" name="fim_data" required>
+                        </div>
+                    </div>
 
-            <button type="submit">Reservar</button>
-        </form>
-    </body>
+                    <!-- Horários Início e Fim (Lado a Lado) -->
+                    <div class="row mb-4">
+                        <div class="col-6">
+                            <label for="horario_inicio" class="form-label text-secondary small fw-medium">Horário Início</label>
+                            <input type="time" class="form-control bg-light border py-2 rounded-3 shadow-none" id="horario_inicio" name="horario_inicio" required>
+                        </div>
+                        <div class="col-6">
+                            <label for="horario_final" class="form-label text-secondary small fw-medium">Horário Final</label>
+                            <input type="time" class="form-control bg-light border py-2 rounded-3 shadow-none" id="horario_final" name="horario_final" required>
+                        </div>
+                    </div>
+
+                    <!-- Botão Reservar -->
+                    <button type="submit" class="btn btn-secondary-custom w-100 py-3 fw-semibold rounded-3 text-white shadow-sm">
+                        Reservar <i class="bi bi-check-lg ms-1"></i>
+                    </button>
+
+                </form>
+
+            </div>
+        </div>
+    </div>
+
+    <!-- Bootstrap 5 JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
+</body>
 </html>

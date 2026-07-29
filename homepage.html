@@ -1,21 +1,127 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>ReservaFácil - Home</title>
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="./CSS/style.css">
 </head>
-<body>
-    
-    <a href="/../ProjetoIntegrador/criarRservalab.html">Reservar Sala/Lab</a>
-    <a href="/../ProjetoIntegrador/atualizarReservaLab.html"> Atualizar Reserva</a>
-    <a href="/../ProjetoIntegrador/criarReservaEquip.html">Reservar Equip</a>
-    <a href="/../ProjetoIntegrador/atualizarReservaEquip.html">atualizar reserva</a>
-    <a href="/../ProjetoIntegrador/PHP/exibirEquip.php">Exibir equipamentos</a>
-    <a href="/../ProjetoIntegrador/PHP/exibirReservasEquip.php">Exibir Rservas de Equipamentos</a>
-    <a href="/../ProjetoIntegrador/PHP/exibirSalas.php">Exibir Salas</a>
-    <a href="/../ProjetoIntegrador/PHP/exibirReservasLab.php">Exibir Reservas de Salas</a>
-    <a href="/../ProjetoIntegrador/cancelarReservaEquip.html">Cancelar Reserva Equipamento</a>
-    <a href="/../ProjetoIntegrador/cancelarReservaSala.html">Cancelar Reserva Sala</a>
+<body class="bg-light">
+
+    <!-- Header / Topo Azul -->
+    <div class="bg-primary-custom text-white pb-5 pt-4 px-3 rounded-bottom-5 shadow">
+        <div class="container max-w-custom">
+            
+            <div class="d-flex justify-content-between align-items-center mb-4">
+                <div class="d-flex align-items-center gap-2">
+                    <div class="bg-white bg-opacity-25 p-2 rounded-3">
+                        <i class="bi bi-calendar-event fs-1 text-white"></i>
+                    </div>
+                    <span class="fw-bold fs-5">ReservaFácil</span>
+                </div>
+                <!-- Botão de Notificações -->
+                <button class="btn btn-dark-glass rounded-circle p-2 text-white position-relative border-0" style="width: 40px; height: 40px;">
+                    <i class="bi bi-bell"></i>
+                    <span class="position-absolute top-0 start-100 translate-middle p-1 bg-warning border border-light rounded-circle"></span>
+                </button>
+            </div>
+
+            <!-- Saudação -->
+            <div class="mb-2">
+                <span class="opacity-75 small">Bem-vindo de volta!</span>
+                <p class="opacity-75 small mb-0"><i class="bi bi-clock me-1"></i> Quarta-Feira, 29 de Julho</p>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- Conteúdo Principal / Cards de Ação -->
+    <div class="container max-w-custom mt-n4 pb-5">
+        
+        <p class="text-uppercase text-muted small fw-bold mb-3 tracking-wider">O que deseja fazer?</p>
+
+        <div class="d-flex flex-column gap-3">
+
+            <!-- 1. Criar Reserva de Sala -->
+            <a href="criarReservaLab.html" class="card border-0 shadow-sm rounded-4 text-decoration-none transition-hover">
+                <div class="card-body p-3 d-flex align-items-center justify-content-between">
+                    <div class="d-flex align-items-center gap-3">
+                        <div class="bg-primary text-white p-3 rounded-3 fs-4 d-flex align-items-center justify-content-center" style="width: 60px; height: 60px;">
+                            <i class="bi bi-door-open"></i>
+                        </div>
+                        <div>
+                            <h5 class="fw-bold text-dark mb-1">Criar Reserva de Sala</h5>
+                            <p class="text-muted small mb-0">Agendar salas de reunião ou laboratórios</p>
+                        </div>
+                    </div>
+                    <i class="bi bi-chevron-right text-muted fs-5 pe-2"></i>
+                </div>
+            </a>
+
+            <!-- 2. Criar Reserva de Equipamento -->
+            <a href="criarReservaEquip.html" class="card border-0 shadow-sm rounded-4 text-decoration-none transition-hover">
+                <div class="card-body p-3 d-flex align-items-center justify-content-between">
+                    <div class="d-flex align-items-center gap-3">
+                        <div class="bg-info text-white p-3 rounded-3 fs-4 d-flex align-items-center justify-content-center" style="width: 60px; height: 60px;">
+                            <i class="bi bi-laptop"></i>
+                        </div>
+                        <div>
+                            <h5 class="fw-bold text-dark mb-1">Criar Reserva de Equipamento</h5>
+                            <p class="text-muted small mb-0">Solicitar projetores, notebooks e outros</p>
+                        </div>
+                    </div>
+                    <i class="bi bi-chevron-right text-muted fs-5 pe-2"></i>
+                </div>
+            </a>
+
+            <!-- 3. Ver Reservas de Salas -->
+            <a href="./PHP/exibirSalas.php" class="card border-0 shadow-sm rounded-4 text-decoration-none transition-hover">
+                <div class="card-body p-3 d-flex align-items-center justify-content-between">
+                    <div class="d-flex align-items-center gap-3">
+                        <div class="bg-warning text-white p-3 rounded-3 fs-4 d-flex align-items-center justify-content-center" style="width: 60px; height: 60px;">
+                            <i class="bi bi-journal-check"></i>
+                        </div>
+                        <div>
+                            <h5 class="fw-bold text-dark mb-1">Ver Reservas de Salas</h5>
+                            <p class="text-muted small mb-0">Consultar histórico e salas agendadas</p>
+                        </div>
+                    </div>
+                    <i class="bi bi-chevron-right text-muted fs-5 pe-2"></i>
+                </div>
+            </a>
+
+            <!-- 4. Ver Reservas de Equipamentos -->
+            <a href="./PHP/exibirReservasEquip.php" class="card border-0 shadow-sm rounded-4 text-decoration-none transition-hover">
+                <div class="card-body p-3 d-flex align-items-center justify-content-between">
+                    <div class="d-flex align-items-center gap-3">
+                        <div class="text-white p-3 rounded-3 fs-4 d-flex align-items-center justify-content-center" style="width: 60px; height: 60px; background-color: #8b5cf6;">
+                            <i class="bi bi-pc-display"></i>
+                        </div>
+                        <div>
+                            <h5 class="fw-bold text-dark mb-1">Ver Reservas de Equipamentos</h5>
+                            <p class="text-muted small mb-0">Consultar status dos equipamentos pedidos</p>
+                        </div>
+                    </div>
+                    <i class="bi bi-chevron-right text-muted fs-5 pe-2"></i>
+                </div>
+            </a>
+
+        </div>
+
+        <!-- Link Sair da Conta -->
+        <div class="text-center mt-5">
+            <a href="logar.php?sair=true" class="text-decoration-none text-muted small d-inline-flex align-items-center gap-1">
+                <i class="bi bi-box-arrow-left"></i> Sair da conta
+            </a>
+        </div>
+
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
